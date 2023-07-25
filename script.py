@@ -66,9 +66,8 @@ print("required_n value is " + str(required_n))
 #%%
 
 # loading data
-df_bridebook = pd.read_csv('/Users/ahmedadel/Downloads/Bridebook - Data Scientist , Task/Bridebook - DS - challengeData.1634399212.csv')
-df_description = pd.read_excel('/Users/ahmedadel/Downloads/Bridebook - Data Scientist , Task/Bridebook - DS - challengeDataLegend.1634399212.xlsx')
-
+df_bridebook = pd.read_csv('Bridebook - DS - challengeData.1634399212.csv')
+df_description = pd.read_excel('Bridebook - DS - challengeDataLegend.1634399212.xlsx')
 
 
 
@@ -125,7 +124,7 @@ results.append(ab_test['testVariant'].value_counts())
 
 
 # %%
-#visualization
+#Checking conversion rates and visualize it
 
 conversion_rates = ab_test.groupby('testVariant')['finOnb']
 
@@ -142,13 +141,13 @@ plt.figure(figsize=(8, 6))
 sns.pointplot(data=result_df, x='testVariant', y='conversion_rate', hue='level_0', ci='sd')
 plt.xlabel('Test Variant')
 plt.ylabel('Conversion Rate')
-plt.title('Conversion Rates with Error Bars for Each Sample')
+plt.title('Conversion Rates with Variants for Each Sample')
 plt.legend(title='Sample')
 plt.show()
 
 
 # %%
-# multipe Random Sampling : premutation
+# multipe Random Sampling : 
 
 #  calculation of the required_n and effect_size
 
@@ -245,7 +244,7 @@ plt.legend(title='Samples')
 plt.show()
 
 
-#%%
+
 
 
 
@@ -415,8 +414,8 @@ plt.show()
 # %%
 
 # Performing the ANOVA test for each variant separately 
-# which i think there isn't enough data for each variant 
-#but it could be used later on 
+# which i think there isn't enough data for each variant corrosponding to the sampling
+#but it could be used later on for comparing multiple variations.
 
 
 
@@ -473,3 +472,5 @@ for variant in range(3):  # 3 variant values: 0, 1, and 2
     plt.title(f'P-value for Variant {variant}')
     plt.show()
 
+#%% 
+#performing CHI square
